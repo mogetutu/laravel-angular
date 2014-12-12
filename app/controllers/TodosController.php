@@ -45,14 +45,20 @@ class TodosController extends BaseController {
     public function update($id)
     {
         $todo = $this->todo->find($id);
+
         if (!$todo) {
             return Response::json(['error' => 'Resource Not Found.'], 404);
         }
-        $validator = Validator::make(Input::all(), $this->todo->rules());
+        $data      =
+            [
+                'title'     => Input::get('title'),
+                'completed' => Input::get('completed'),
+            ];
+        $validator = Validator::make($data, $this->todo->rules());
         if ($validator->fails()) {
-            return Response::json($validator->messages(), 404);
+            return Response::json(['errors' => $validator->messages()], 404);
         }
-        $todo->update(Input::only('title', 'completed'));
+        $todo->update($data);
 
         return Response::json('', 204);
     }
