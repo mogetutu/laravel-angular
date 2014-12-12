@@ -1,5 +1,4 @@
-laravel-angular
-===============
+### laravel-angular
 
 Technical Assignment
 
