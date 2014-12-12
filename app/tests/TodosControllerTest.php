@@ -19,12 +19,12 @@ class TodosControllerTest extends TestCase {
 
     public function testGet()
     {
-        $todo = array($this->todo);
+        $todo = '{"id":1,"title":"New Todo Item","completed":0}';
         $this->mock->shouldReceive('all')->once()->andReturn($todo);
         $this->app->instance('\Acme\Todo', $this->mock);
         $request = $this->call('GET', '/todos');
         $this->assertEquals(200, $request->getStatusCode());
-        $this->assertEquals($request->getContent(), $todo);
+        $this->assertEquals($request->getContent(), '{"id":1,"title":"New Todo Item","completed":0}');
     }
 
     public function testCreateTodo()
@@ -34,7 +34,7 @@ class TodosControllerTest extends TestCase {
         $this->app->instance('\Acme\Todo', $this->mock);
         $request = $this->call('POST', '/todos', $this->todo);
         $this->assertEquals(201, $request->getStatusCode());
-        $this->assertEquals($request->getContent(), '{"id":1,"title":"New Todo Item","completed":0}}');
+        $this->assertEquals($request->getContent(), '{"id":1,"title":"New Todo Item","completed":0}');
     }
 
     public function testGetByExistingId()
@@ -55,7 +55,7 @@ class TodosControllerTest extends TestCase {
         $this->assertEquals($request->getContent(), '{"error":"Resource Not Found."}');
     }
 
-    public function testUpdateExistingResource()
+    public function testUpdateExistingId()
     {
         $this->update_mock = Mockery::mock('Eloquent', '\Acme\Todo');
         $this->update_mock->shouldReceive('jsonSerialize')->once();
