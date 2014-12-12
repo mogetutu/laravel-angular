@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Laravel Angular</title>
+	<title>Laravel Angular | Made with Love</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.css"/>
@@ -33,7 +33,7 @@
 			</div>
 			<ul class="list-group">
 				<li class="list-group-item" ng-repeat="todo in todos | filter:search">
-					<input type="checkbox" ng-model="todo.completed" ng-change="completeTodo(todo)">
+					<input type="checkbox" ng-checked="todo.completed" ng-model="todo.completed" ng-change="completeTodo(todo)">
 					&nbsp;
 					{{ todo.title }}
 					<a class="pull-right label label-danger" ng-click="deleteTodo(todo)">remove</a>
