@@ -11,6 +11,7 @@ Technical Assignment
 
 * Install homestead: http://laravel.com/docs/homestead#installation-and-setup
 * Clone Repo to /path/to/shared/vagrant/code/folder
+
     ``
         git clone git@github.com:mogetutu/laravel-angular.git
     ``
