@@ -63,4 +63,15 @@ class TodosController extends BaseController {
         return Response::json('', 204);
     }
 
+    public function destroy($id)
+    {
+        $todo = $this->todo->find($id);
+        if (!$todo) {
+            return Response::json(['error' => 'Resource Not Found.'], 404);
+        }
+        $todo->delete();
+
+        return Response::make(null, 204);
+    }
+
 }
