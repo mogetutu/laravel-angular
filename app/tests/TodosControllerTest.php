@@ -35,7 +35,15 @@ class TodosControllerTest extends TestCase {
     {
         $response = $this->call('GET', '/todos/1');
         $this->assertEquals(200, $response->getStatusCode());
-        $data = json_decode($response->getContent());
-        $this->assertInternalType('array', $data, 'Invalid JSON');
+        $this->assertEquals($response->getContent(), '{"id":1,"title":"Create Laravel App","completed":1,"created_at":"2014-12-12 10:51:15","updated_at":"2014-12-12 10:51:15"}');
+    }
+
+    public function testGetByNonExistingId()
+    {
+        $response = $this->call('GET', '/todos/1010101010101');
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals($response->getContent(), '{"error":"Resource Not Found."}');
+    }
+
     }
 } 
