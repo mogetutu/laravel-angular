@@ -29,9 +29,10 @@ Technical Assignment
 
 * Provision you Vagrant Box
 
-    ```
+    ``
         homestead up
     ``
+
 * Access app at
 
     ``
