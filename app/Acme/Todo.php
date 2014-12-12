@@ -3,7 +3,12 @@
 class Todo extends \Eloquent {
 
     protected $table = 'todos';
-    protected $fillable   = array('title', 'description', 'status');
-    protected $guarded    = array('id');
+    protected $fillable = ['title', 'completed'];
+    protected $guarded = ['id'];
+
+    public function rules()
+    {
+        return ['title' => 'required'];
+    }
 
 }
