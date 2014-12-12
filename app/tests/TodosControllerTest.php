@@ -45,5 +45,10 @@ class TodosControllerTest extends TestCase {
         $this->assertEquals($response->getContent(), '{"error":"Resource Not Found."}');
     }
 
+    public function testUpdateExistingResource()
+    {
+        $this->call('PUT', '/todos/1', ['title' => 'Update First Todo']);
+        $this->assertTrue($this->client->getResponse()->isOk());
+        $this->assertEquals($this->client->getResponse()->getContent(), '{"id":1,"title":"Update First Todo","completed":1,"created_at":"2014-12-12 10:51:15","updated_at":"2014-12-12 10:51:15"}');
     }
 } 
