@@ -20,7 +20,7 @@ Technical Assignment
     ``
         php artisan migrate && php artisan db:seed
     ``
-* Update `Homestead.yml' add the following under the various segments
+* Update `Homestead.yml` add the following under the various segments
 
     ```
         sites:
