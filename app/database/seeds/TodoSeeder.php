@@ -7,7 +7,7 @@ class TodoSeeder extends DatabaseSeeder {
     {
         DB::table('todos')->truncate();
         $faker = Faker\Factory::create();
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             Todo::create(
                 [
                     'title'     => $faker->sentence,
