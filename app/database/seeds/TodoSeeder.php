@@ -5,19 +5,15 @@ use Acme\Todo;
 class TodoSeeder extends DatabaseSeeder {
     public function run()
     {
-        $todos = [
-            [
-                "title"     => "Create Laravel App",
-                "completed" => 1,
-            ],
-            [
-                "title"     => "Create Angular App",
-                "completed" => 0,
-            ]
-        ];
-
-        foreach ($todos as $todo) {
-            Todo::create($todo);
+        DB::table('todos')->truncate();
+        $faker = Faker\Factory::create();
+        for ($i = 0; $i < 20; $i++) {
+            Todo::create(
+                [
+                    'title'     => $faker->sentence,
+                    'completed' => $faker->randomElement([0, 1])
+                ]
+            );
         }
     }
 }
