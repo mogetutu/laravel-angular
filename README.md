@@ -15,7 +15,7 @@ Technical Assignment
         git clone git@github.com:mogetutu/laravel-angular.git
     ``
 * From within clone laravel app directory
-    *Migrate and Seed Database
+    * Migrate and Seed Database
 
     ``
         php artisan migrate && php artisan db:seed
